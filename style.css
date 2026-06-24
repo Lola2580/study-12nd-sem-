@@ -1,0 +1,488 @@
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    overflow-y:auto;
+    background:#060b17;
+    color:#fff;
+}
+
+/* =========================
+   ANIMATED BACKGROUND
+========================= */
+
+.bg-animation{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-1;
+}
+
+.bg-animation span{
+    position:absolute;
+    display:block;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.35;
+    animation:float 15s linear infinite;
+}
+
+.bg-animation span:nth-child(1){
+    width:300px;
+    height:300px;
+    background:#00c6ff;
+    left:-50px;
+    top:10%;
+}
+
+.bg-animation span:nth-child(2){
+    width:250px;
+    height:250px;
+    background:#8e2de2;
+    right:10%;
+    top:5%;
+}
+
+.bg-animation span:nth-child(3){
+    width:200px;
+    height:200px;
+    background:#00ff99;
+    left:20%;
+    bottom:10%;
+}
+
+.bg-animation span:nth-child(4){
+    width:220px;
+    height:220px;
+    background:#ff5f6d;
+    right:15%;
+    bottom:15%;
+}
+
+.bg-animation span:nth-child(5){
+    width:180px;
+    height:180px;
+    background:#ffc371;
+    left:50%;
+    top:40%;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-40px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:100%;
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+/* =========================
+   GLASS CARD
+========================= */
+
+.glass-card{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    box-shadow:
+    0 8px 40px rgba(0,0,0,.4);
+}
+
+/* =========================
+   SPLASH SCREEN
+========================= */
+
+#splash-screen{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.splash-card{
+    width:100%;
+    max-width:650px;
+    text-align:center;
+    padding:50px;
+    border-radius:35px;
+}
+
+.semester-badge{
+    display:inline-flex;
+    gap:10px;
+    align-items:center;
+    padding:10px 22px;
+    border-radius:50px;
+    background:rgba(255,255,255,.08);
+    color:#ffd369;
+    margin-bottom:25px;
+}
+
+.main-title{
+    font-size:4rem;
+    font-weight:800;
+    background:linear-gradient(
+    90deg,
+    #00c6ff,
+    #8e2de2,
+    #00ff99
+    );
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+    margin-top:15px;
+    color:#b8c7e0;
+    font-size:1.1rem;
+}
+
+.start-btn{
+    margin-top:35px;
+    border:none;
+    cursor:pointer;
+    padding:16px 45px;
+    border-radius:50px;
+    font-size:1rem;
+    font-weight:700;
+    color:#fff;
+    background:linear-gradient(
+    135deg,
+    #00c6ff,
+    #8e2de2
+    );
+    transition:.3s;
+}
+
+.start-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:
+    0 10px 25px rgba(0,198,255,.4);
+}
+
+/* =========================
+   MAIN PANEL
+========================= */
+
+#main-panel{
+    display:none;
+    height:100vh;
+    padding-top:20px;
+}
+
+.top-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.logo-box,
+.counter-box{
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.12);
+    padding:12px 20px;
+    border-radius:16px;
+    backdrop-filter:blur(10px);
+}
+
+.logo-box i{
+    color:#00c6ff;
+    margin-right:8px;
+}
+
+.counter-box{
+    color:#ffd369;
+    font-weight:600;
+}
+
+/* =========================
+   SUBJECT BUTTONS
+========================= */
+
+.subject-section{
+    display:flex;
+    gap:15px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+}
+
+.subject-btn{
+    border:none;
+    cursor:pointer;
+    padding:14px 28px;
+    border-radius:16px;
+    color:#fff;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    transition:.3s;
+}
+
+.subject-btn:hover{
+    transform:translateY(-2px);
+}
+
+.subject-btn.active{
+    background:linear-gradient(
+    135deg,
+    #00c6ff,
+    #8e2de2
+    );
+}
+
+/* =========================
+   PAPER BOX
+========================= */
+
+.paper-box{
+    margin-bottom:20px;
+}
+
+.paper-box h2{
+    font-size:2rem;
+    font-weight:800;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:16px;
+    padding:14px 18px;
+    margin-bottom:20px;
+}
+
+.search-box input{
+    width:100%;
+    background:none;
+    border:none;
+    outline:none;
+    color:white;
+    font-size:1rem;
+}
+
+.search-box input::placeholder{
+    color:#9eb0cf;
+}
+
+/* =========================
+   QNA AREA
+========================= */
+
+.qna-scroll{
+    height:60vh;
+    overflow-y:auto;
+    padding-right:8px;
+}
+
+.qna-scroll::-webkit-scrollbar{
+    width:8px;
+}
+
+.qna-scroll::-webkit-scrollbar-thumb{
+    background:#00c6ff;
+    border-radius:50px;
+}
+
+/* =========================
+   QUESTION CARD
+========================= */
+
+.qn-item{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:20px;
+    margin-bottom:15px;
+    padding:18px;
+    backdrop-filter:blur(12px);
+}
+
+.qn-row{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.qn-text{
+    flex:1;
+    font-size:1rem;
+    line-height:1.6;
+}
+
+.qn-label{
+    color:#ffd369;
+    font-weight:700;
+    margin-right:10px;
+}
+
+.arrow-btn{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    background:rgba(255,255,255,.08);
+    transition:.3s;
+}
+
+.arrow-btn:hover{
+    background:#00c6ff;
+}
+
+.arrow-btn.active-arrow{
+    transform:rotate(180deg);
+}
+
+/* =========================
+   ANSWER BOX
+========================= */
+
+.answer-box{
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transition:.4s;
+}
+
+.answer-box.show-answer{
+    max-height:800px;
+    opacity:1;
+    margin-top:15px;
+}
+
+.answer-content{
+    background:rgba(0,0,0,.25);
+    border-left:4px solid #00c6ff;
+    padding:18px;
+    border-radius:15px;
+    line-height:1.8;
+}
+
+/* =========================
+   RICH CONTENT
+========================= */
+
+.answer-content h1,
+.answer-content h2,
+.answer-content h3{
+    margin-bottom:10px;
+    color:#00c6ff;
+}
+
+.answer-content img{
+    width:100%;
+    max-width:500px;
+    border-radius:12px;
+    margin:15px 0;
+}
+
+.answer-content ul{
+    margin-left:20px;
+}
+
+.answer-content table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.answer-content th,
+.answer-content td{
+    border:1px solid rgba(255,255,255,.2);
+    padding:10px;
+}
+
+.info-box,
+.warning-box,
+.success-box{
+    padding:15px;
+    border-radius:12px;
+    margin:12px 0;
+}
+
+.info-box{
+    background:rgba(0,198,255,.15);
+    border-left:4px solid #00c6ff;
+}
+
+.warning-box{
+    background:rgba(255,99,71,.15);
+    border-left:4px solid tomato;
+}
+
+.success-box{
+    background:rgba(0,255,128,.15);
+    border-left:4px solid #00ff80;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer-note{
+    text-align:center;
+    margin-top:15px;
+    color:#9eb0cf;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+    .main-title{
+        font-size:2.8rem;
+    }
+
+    .top-header{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .paper-box h2{
+        font-size:1.4rem;
+    }
+
+    .subject-section{
+        flex-direction:column;
+    }
+
+    .subject-btn{
+        width:100%;
+    }
+
+}
