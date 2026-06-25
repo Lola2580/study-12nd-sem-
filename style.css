@@ -506,34 +506,59 @@ body{
 =================================== */
 
 .fullscreen-modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.95);
+
     display:none;
-    z-index:9999;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:99999;
+
+    background:#08111f;
+
     overflow-y:auto;
-    padding:20px;
+
 }
 
 .fullscreen-content{
+
+    width:100%;
+
     max-width:900px;
+
     margin:auto;
-    background:#111827;
-    border-radius:20px;
-    padding:20px;
+
+    min-height:100vh;
+
+    padding:25px;
+
 }
 
 .close-fullscreen{
+
     position:fixed;
-    top:20px;
-    right:20px;
+
+    top:15px;
+
+    right:15px;
+
     width:45px;
+
     height:45px;
+
     border:none;
+
     border-radius:50%;
-    background:#ff5f6d;
+
+    background:#ff4444;
+
     color:white;
+
     cursor:pointer;
+
+    z-index:999999;
+
 }
 
 /* ===================================
