@@ -345,7 +345,7 @@ body{
     background:rgba(255,255,255,.06);
     border:1px solid rgba(255,255,255,.12);
     border-radius:16px;
-    padding:12px;
+    padding:10px;
     margin-bottom:12px;
     backdrop-filter:blur(12px);
 }
@@ -359,7 +359,7 @@ body{
 
 .qn-text{
     flex:1;
-    font-size:.92rem;
+    font-size:15px;
     line-height:1.5;
 }
 
@@ -374,8 +374,8 @@ body{
 =================================== */
 
 .arrow-btn{
-    width:34px;
-    height:34px;
+    width:32px;
+    height:32px;
     border-radius:50%;
     background:rgba(255,255,255,.08);
     display:flex;
@@ -412,8 +412,8 @@ body{
     border-left:4px solid #00c6ff;
     padding:14px;
     border-radius:12px;
-    line-height:1.7;
-    font-size:.9rem;
+    line-height:1.5;
+    font-size:14px;
 }
 
 /* ===================================
@@ -421,16 +421,24 @@ body{
 =================================== */
 
 .answer-content h1,
-.answer-content h2,
+.answer-content h2,{
+    font-size:22px;
+}
 .answer-content h3{
     color:#00c6ff;
     margin-bottom:10px;
+     font-size:18px;
 }
-
+.answer-content p,
+.answer-content li{
+    font-size:14px;
+}
 .answer-content img{
     width:100%;
     border-radius:12px;
-    margin:12px 0;
+    margin:auto;
+    max-width:350px;
+    display:block;
 }
 
 .answer-content ul{
@@ -444,13 +452,13 @@ body{
     overflow-x:auto;
 
     white-space:nowrap;
-
+   font-size:13px;
 }
 
 .answer-content th,
 .answer-content td{
     border:1px solid rgba(255,255,255,.15);
-    padding:8px;
+    padding:6px;
     text-align:left;
 }
 
@@ -465,9 +473,10 @@ body{
 .info-box,
 .success-box,
 .warning-box{
-    padding:12px;
+    padding:10px;
     border-radius:10px;
     margin:10px 0;
+     font-size:13px;
 }
 
 .info-box{
