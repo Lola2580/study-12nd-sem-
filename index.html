@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2nd Semester Study Hub</title>
+    <title>2nd Semester Study Hub V3</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
@@ -23,49 +23,60 @@
         <span></span>
     </div>
 
-    <div class="container">
+    <!-- ========================= -->
+    <!-- SPLASH SCREEN -->
+    <!-- ========================= -->
 
-        <!-- Splash Screen -->
-        <section id="splash-screen">
+    <section id="splash-screen">
 
-            <div class="glass-card splash-card">
+        <div class="splash-card glass">
 
-                <div class="semester-badge">
-                    <i class="fas fa-graduation-cap"></i>
-                    2nd Semester
-                </div>
-
-                <h1 class="main-title">
-                    Study Hub
-                </h1>
-
-                <p class="subtitle">
-                    Modern QnA Learning Portal
-                </p>
-
-                <button id="startBtn" class="start-btn">
-                    <i class="fas fa-play"></i>
-                    Start Learning
-                </button>
-
+            <div class="semester-badge">
+                <i class="fas fa-graduation-cap"></i>
+                2nd Semester
             </div>
 
-        </section>
+            <h1 class="main-title">
+                Study Hub
+            </h1>
 
-        <!-- Main Panel -->
-        <section id="main-panel">
+            <p class="subtitle">
+                Smart Learning Portal
+            </p>
 
-            <!-- Header -->
-            <div class="top-header">
+            <button id="startBtn" class="start-btn">
+                <i class="fas fa-play"></i>
+                Start Learning
+            </button>
 
-                <div class="logo-box">
-                    <i class="fas fa-book-open"></i>
-                    <span>2nd Semester</span>
-                </div>
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- MAIN PANEL -->
+    <!-- ========================= -->
+
+    <section id="main-panel">
+
+        <!-- Top Header -->
+
+        <div class="top-header">
+
+            <div class="logo-box">
+                <i class="fas fa-book-open"></i>
+                2nd Semester
+            </div>
+
+            <div class="header-actions">
+
+                <button id="ideaBtn" class="idea-btn">
+                    <i class="fas fa-lightbulb"></i>
+                    IDEA
+                </button>
 
                 <div class="counter-box">
-                    <i class="fas fa-list"></i>
-                    Qn:
+                    Qn
                     <span id="currentQnNum">0</span>
                     /
                     <span id="totalQnNum">0</span>
@@ -73,66 +84,167 @@
 
             </div>
 
-            <!-- Subject Buttons -->
-            <div class="subject-section">
+        </div>
 
-                <button class="subject-btn active"
-                    data-subject="major3">
+        <!-- Subject Buttons -->
 
-                    <i class="fas fa-microchip"></i>
-                    Major 3
-                </button>
+        <div class="subject-section">
 
-                <button class="subject-btn"
-                    data-subject="major4">
+            <button class="subject-btn active"
+                data-subject="major3">
 
-                    <i class="fas fa-code"></i>
-                    Major 4
-                </button>
+                <i class="fas fa-microchip"></i>
+                Major 3
+            </button>
+
+            <button class="subject-btn"
+                data-subject="major4">
+
+                <i class="fas fa-code"></i>
+                Major 4
+            </button>
+
+        </div>
+
+        <!-- Paper Name -->
+
+        <div class="paper-box">
+
+            <h2 id="paperName">
+                Major 3
+            </h2>
+
+        </div>
+
+        <!-- Search -->
+
+        <div class="search-box">
+
+            <i class="fas fa-search"></i>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search Question..."
+            >
+
+        </div>
+
+        <!-- QNA AREA -->
+
+        <div id="qnaScroll"
+            class="qna-scroll">
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- FULL SCREEN READER -->
+    <!-- ========================= -->
+
+    <div id="fullscreenModal"
+         class="fullscreen-modal">
+
+        <div class="fullscreen-content">
+
+            <button id="closeFullscreen"
+                class="close-fullscreen">
+
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div id="fullscreenBody">
 
             </div>
 
-            <!-- Paper Name -->
-            <div class="paper-box">
-
-                <h2 id="paperName">
-                    Major 3 · DSA
-                </h2>
-
-            </div>
-
-            <!-- Search Box -->
-            <div class="search-box">
-
-                <i class="fas fa-search"></i>
-
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Search Question..."
-                >
-
-            </div>
-
-            <!-- Questions Area -->
-            <div id="qnaScroll" class="qna-scroll">
-
-                <!-- Dynamic Questions Here -->
-
-            </div>
-
-            <!-- Footer -->
-            <div class="footer-note">
-
-                <i class="fas fa-angle-down"></i>
-                Click Arrow To View Answer
-                <i class="fas fa-angle-down"></i>
-
-            </div>
-
-        </section>
+        </div>
 
     </div>
+
+    <!-- ========================= -->
+    <!-- PASSWORD POPUP -->
+    <!-- ========================= -->
+
+    <div id="passwordModal"
+         class="password-modal">
+
+        <div class="password-card glass">
+
+            <h2>
+                Enter Password
+            </h2>
+
+            <input
+                type="password"
+                id="passwordInput"
+                placeholder="Password"
+            >
+
+            <button id="passwordSubmit">
+
+                GET
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- SECRET NOTES PANEL -->
+    <!-- ========================= -->
+
+    <div id="notesPanel">
+
+        <div class="notes-header">
+
+            <h2>
+                Study Notes
+            </h2>
+
+            <button id="closeNotes">
+                Close
+            </button>
+
+        </div>
+
+        <div class="notes-buttons">
+
+            <button id="notesMajor3">
+                Major 3 Notes
+            </button>
+
+            <button id="notesMajor4">
+                Major 4 Notes
+            </button>
+
+        </div>
+
+        <div class="pdf-actions">
+
+            <button id="downloadPdfBtn">
+
+                <i class="fas fa-file-pdf"></i>
+                Download PDF
+
+            </button>
+
+        </div>
+
+        <div id="notesContainer">
+
+        </div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- LIBRARIES -->
+    <!-- ========================= -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <!-- JS -->
     <script src="script.js"></script>
