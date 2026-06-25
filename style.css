@@ -400,14 +400,11 @@ body{
 .answer-box{
     max-height:0;
     overflow:hidden;
-    opacity:0;
-    transition:.45s ease;
+    transition:max-height .5s ease;
 }
 
 .answer-box.show-answer{
-    max-height:4000px;
-    opacity:1;
-    margin-top:12px;
+    max-height:99999px;
 }
 
 .answer-content{
@@ -441,9 +438,13 @@ body{
 }
 
 .answer-content table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:12px;
+
+    display:block;
+
+    overflow-x:auto;
+
+    white-space:nowrap;
+
 }
 
 .answer-content th,
