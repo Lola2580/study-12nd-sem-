@@ -1272,60 +1272,36 @@ final double PI = 3.14159;
 // FULL SCREEN SYSTEM
 // =========================
 
-const fullscreenModal =
-    document.getElementById(
-        "fullscreenModal"
-    );
+const fullscreenModal = document.getElementById("fullscreenModal");
+const fullscreenBody = document.getElementById("fullscreenBody");
+const closeFullscreen = document.getElementById("closeFullscreen");
 
-const fullscreenBody =
-    document.getElementById(
-        "fullscreenBody"
-    );
+function bindFullscreen() {
 
-const closeFullscreen =
-    document.getElementById(
-        "closeFullscreen"
-    );
+    document.querySelectorAll(".fullscreen-btn").forEach(btn => {
 
-// renderQuestions() ke andar
-// answer-content ke niche ye add karo:
+        btn.addEventListener("click", () => {
 
-/*
+            const index = Number(btn.dataset.full);
 
-<button class="fullscreen-btn"
-data-full="${index}">
-    ⛶ Full Screen
-</button>
-
-*/
-
-// renderQuestions() ke baad
-
-function bindFullscreen(){
-
-    document
-    .querySelectorAll(
-        ".fullscreen-btn"
-    )
-    .forEach(btn=>{
-
-        btn.addEventListener(
-        "click",()=>{
-
-            const index =
-                btn.dataset.full;
-
-            const data =
-                qnaData[currentSubject]
-                .questions[index];
+            const data = qnaData[currentSubject].questions[index];
 
             fullscreenBody.innerHTML = `
                 <h1>${data.q}</h1>
                 ${data.a}
             `;
 
-            fullscreenModal.style.display =
-                "block";
+            // Show Modal
+            fullscreenModal.style.display = "block";
+
+            // Browser Fullscreen
+            if (fullscreenModal.requestFullscreen) {
+                fullscreenModal.requestFullscreen();
+            } else if (fullscreenModal.webkitRequestFullscreen) {
+                fullscreenModal.webkitRequestFullscreen();
+            } else if (fullscreenModal.msRequestFullscreen) {
+                fullscreenModal.msRequestFullscreen();
+            }
 
         });
 
@@ -1333,11 +1309,25 @@ function bindFullscreen(){
 
 }
 
-closeFullscreen?.addEventListener(
-"click",()=>{
+// Close Button
+closeFullscreen.addEventListener("click", () => {
 
-    fullscreenModal.style.display =
-        "none";
+    fullscreenModal.style.display = "none";
+
+    if (document.fullscreenElement) {
+        document.exitFullscreen();
+    } else if (document.webkitFullscreenElement) {
+        document.webkitExitFullscreen();
+    }
+
+});
+
+// ESC se bhi modal hide
+document.addEventListener("fullscreenchange", () => {
+
+    if (!document.fullscreenElement) {
+        fullscreenModal.style.display = "none";
+    }
 
 });
 
