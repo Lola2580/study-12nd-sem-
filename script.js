@@ -1,4 +1,5 @@
-(function () {
+(function(){
+
     "use strict";
 
     // =========================
@@ -7,62 +8,81 @@
 
     const qnaData = {
 
-        major3: {
-            paperName: "Major 3 · DSA",
-            questions: [
-
+        major3:{
+            paperName:"Major 3 · DSA",
+            questions:[
                 {
-                    q: "What is an Array?",
-                    a: `
-                        <h3>Array</h3>
-
+                    q:"State and explain the pigeonhole principle.",
+                    a:`
+                        <h2>Defination</h2>
+                        The Pigeonhole Principle is a fundamental principle in Discrete Mathematics. It states that:
                         <div class="info-box">
-                            Array is a collection of elements stored in contiguous memory locations.
+                          If more than n objects are placed into n boxes, then at least one box must contain more than one object.
                         </div>
+                        in simple words:      
+        <div class="info-box">If the number of objects is greater than the number of boxes, then at least one box will contain two or more objects.</div>    
+        <h2>Explanation</h2>
+            The Pigeonhole Principle is based on a very simple counting idea.
 
-                        <ul>
-                            <li>Fixed Size</li>
-                            <li>Index Based</li>
-                            <li>Fast Access</li>
-                        </ul>
-                    `
-                },
+Suppose we have 5 pigeons and 4 pigeonholes. If each pigeon is placed into a pigeonhole, it is impossible for every pigeonhole to contain only one pigeon because there are more pigeons than pigeonholes.
 
-                {
-                    q: "What is Stack?",
-                    a: `
-                        <h3>Stack</h3>
+Therefore, at least one pigeonhole must contain 2 or more pigeons.<br>
+This principle is widely used in:
+<ul>
+<li>Combinatorics</li>
+<li>Computer Science</li>
+<li>Graph Theory</li>
+<li>Number Theory</li>
+<li>Data Structures and Algorithms (DSA)</li>
+</ul>
+It helps in proving that certain situations must occur without identifying exactly where they occur.
+<h2>Mathematical Form</h2>
+  <div class="info-box">If N objects are distributed among k boxes, then at least one box contains at least<br>⌈N/k⌉<br>
+objects, where ⌈ ⌉ denotes the ceiling function (smallest integer greater than or equal to the value).</div>
+<h2>Example 1</h2>
+Suppose there are 13 students in a class and only 12 months in a year.<br>
 
-                        <div class="success-box">
-                            Stack follows LIFO (Last In First Out).
-                        </div>
+Since the number of students (13) is greater than the number of months (12), at least two students must have birthdays in the same month.<br>
 
-                        <ul>
-                            <li>Push Operation</li>
-                            <li>Pop Operation</li>
-                            <li>Peek Operation</li>
-                        </ul>
-                    `
-                },
+This follows directly from the Pigeonhole Principle.
+<h2>Example 2</h2>
+There are 10 balls placed into 9 boxes.<br>
 
-                {
-                    q: "What is Queue?",
-                    a: `
-                        <h3>Queue</h3>
-
-                        <div class="warning-box">
-                            Queue follows FIFO (First In First Out).
-                        </div>
-                    `
+Since 10 > 9, at least one box will contain 2 or more balls.
+  <div class="info-box"><h2>Applications</h2>
+The Pigeonhole Principle is used in:
+<ul>
+<li>Proving mathematical theorems</li>
+<li>Algorithm design</li>
+<li>Hashing techniques</li>
+<li>Data storage and memory allocation</li>
+<li>Scheduling problems</li>
+<li>Network and communication systems</li>
+</ul>
+<h2>Advantages</h2>
+<ul>
+<li>Simple and easy to understand.</li>
+<li>Useful for proving the existence of a result.</li>
+<li>Widely applied in mathematics and computer science.</li>
+<li>Helps solve many counting and optimization problems.</li>
+</ul></div>
+            `
                 }
-
             ]
         },
 
-        major4: {
-            paperName: "Major 4 · JAVA",
-            questions: [
-
+        major4:{
+            paperName:"Major 4 · JAVA",
+            questions:[
+                {
+                    q:"What is Java?",
+                    a:`
+                        <h2>Java</h2>
+                        <div class="info-box">
+                            Java is a high-level object-oriented programming language.
+                        </div>
+                    `
+                },
                 {
                     q: "JAVA Architecture?",
                     a: `
@@ -1009,21 +1029,32 @@ final double PI = 3.14159;
     // DOM
     // =========================
 
-    const splashScreen = document.getElementById("splash-screen");
-    const mainPanel = document.getElementById("main-panel");
+    const splashScreen =
+        document.getElementById("splash-screen");
 
-    const startBtn = document.getElementById("startBtn");
+    const mainPanel =
+        document.getElementById("main-panel");
 
-    const qnaScroll = document.getElementById("qnaScroll");
+    const startBtn =
+        document.getElementById("startBtn");
 
-    const paperName = document.getElementById("paperName");
+    const qnaScroll =
+        document.getElementById("qnaScroll");
 
-    const currentQnNum = document.getElementById("currentQnNum");
-    const totalQnNum = document.getElementById("totalQnNum");
+    const paperName =
+        document.getElementById("paperName");
 
-    const subjectBtns = document.querySelectorAll(".subject-btn");
+    const searchInput =
+        document.getElementById("searchInput");
 
-    const searchInput = document.getElementById("searchInput");
+    const currentQnNum =
+        document.getElementById("currentQnNum");
+
+    const totalQnNum =
+        document.getElementById("totalQnNum");
+
+    const subjectBtns =
+        document.querySelectorAll(".subject-btn");
 
     // =========================
     // STATE
@@ -1034,159 +1065,50 @@ final double PI = 3.14159;
     let answerVisible = {};
 
     // =========================
-    // RENDER
+    // START BUTTON
     // =========================
 
-    function renderQuestions(searchText = "") {
+    startBtn.addEventListener("click",()=>{
 
-        const data = qnaData[currentSubject];
-
-        paperName.textContent = data.paperName;
-
-        const filteredQuestions = data.questions.filter(item =>
-            item.q.toLowerCase().includes(searchText.toLowerCase())
-        );
-
-        totalQnNum.textContent = filteredQuestions.length;
-
-        let html = "";
-
-        filteredQuestions.forEach((item, index) => {
-
-            const isOpen = answerVisible[index];
-
-            html += `
-                <div class="qn-item" data-index="${index}">
-
-                    <div class="qn-row">
-
-                        <div class="qn-text">
-                            <span class="qn-label">
-                                Q${index + 1}
-                            </span>
-
-                            ${item.q}
-                        </div>
-
-                        <div class="arrow-btn ${isOpen ? "active-arrow" : ""}"
-                             data-index="${index}">
-
-                             <i class="fas fa-chevron-down"></i>
-
-                        </div>
-
-                    </div>
-
-                    <div class="answer-box ${isOpen ? "show-answer" : ""}">
-
-                        <div class="answer-content">
-
-                            ${item.a}
-
-                        </div>
-
-                    </div>
-
-                </div>
-            `;
-        });
-
-        qnaScroll.innerHTML = html;
-
-        currentQnNum.textContent =
-            filteredQuestions.length > 0 ? 1 : 0;
-
-        bindArrowEvents();
-    }
-
-    // =========================
-    // TOGGLE ANSWER
-    // =========================
-
-    function bindArrowEvents() {
-
-    document
-        .querySelectorAll(".arrow-btn")
-        .forEach(btn => {
-
-            btn.addEventListener("click", function () {
-
-                const index = this.dataset.index;
-
-                // Agar ye already open hai to close karo
-                if (answerVisible[index]) {
-
-                    answerVisible = {};
-
-                } else {
-
-                    // Sab close karo
-                    answerVisible = {};
-
-                    // Sirf current open karo
-                    answerVisible[index] = true;
-
-                }
-
-                renderQuestions(searchInput.value);
-
-            });
-
-        });
-
-}
-    // =========================
-    // SUBJECT SWITCH
-    // =========================
-
-    function switchSubject(subject) {
-
-        currentSubject = subject;
-
-        answerVisible = {};
-
-        subjectBtns.forEach(btn => {
-
-            btn.classList.remove("active");
-
-            if (btn.dataset.subject === subject) {
-                btn.classList.add("active");
-            }
-
-        });
-
-        renderQuestions(
-            searchInput.value
-        );
-    }
-
-    // =========================
-    // EVENTS
-    // =========================
-
-    startBtn.addEventListener("click", () => {
-
-        splashScreen.style.display = "none";
-
-        mainPanel.style.display = "block";
+        splashScreen.style.display="none";
+        mainPanel.style.display="block";
 
         renderQuestions();
 
     });
 
-    subjectBtns.forEach(btn => {
+    // =========================
+    // SUBJECT SWITCH
+    // =========================
 
-        btn.addEventListener("click", () => {
+    subjectBtns.forEach(btn=>{
 
-            switchSubject(
-                btn.dataset.subject
+        btn.addEventListener("click",()=>{
+
+            currentSubject =
+                btn.dataset.subject;
+
+            answerVisible = {};
+
+            subjectBtns.forEach(b=>{
+                b.classList.remove("active");
+            });
+
+            btn.classList.add("active");
+
+            renderQuestions(
+                searchInput.value
             );
 
         });
 
     });
 
-    searchInput.addEventListener("input", () => {
+    // =========================
+    // SEARCH
+    // =========================
+
+    searchInput.addEventListener("input",()=>{
 
         renderQuestions(
             searchInput.value
@@ -1194,4 +1116,452 @@ final double PI = 3.14159;
 
     });
 
+    // =========================
+    // RENDER QUESTIONS
+    // =========================
+
+    function renderQuestions(
+        searchText=""
+    ){
+
+        const data =
+            qnaData[currentSubject];
+
+        paperName.textContent =
+            data.paperName;
+
+        const filtered =
+            data.questions.filter(item=>
+                item.q
+                .toLowerCase()
+                .includes(
+                    searchText.toLowerCase()
+                )
+            );
+
+        totalQnNum.textContent =
+            filtered.length;
+
+        currentQnNum.textContent =
+            filtered.length ? 1 : 0;
+
+        let html = "";
+
+        filtered.forEach(
+        (item,index)=>{
+
+            const isOpen =
+                answerVisible[index] || false;
+
+            html += `
+
+            <div class="qn-item"
+                 data-index="${index}">
+
+                <div class="qn-row">
+
+                    <div class="qn-text">
+
+                        <span class="qn-label">
+                            Q${index+1}
+                        </span>
+
+                        ${item.q}
+
+                    </div>
+
+                    <div class="arrow-btn
+                        ${isOpen ?
+                        "active-arrow" : ""}"
+
+                        data-index="${index}">
+
+                        <i class="fas fa-chevron-down"></i>
+
+                    </div>
+
+                </div>
+
+                <div class="answer-box
+                    ${isOpen ?
+                    "show-answer" : ""}">
+
+                    <div class="answer-content">
+    ${item.a}
+
+    <button
+      class="fullscreen-btn"
+      data-full="${index}">
+      ⛶
+    </button>
+</div>
+
+                </div>
+
+            </div>
+
+            `;
+
+        });
+
+        qnaScroll.innerHTML = html;
+
+        bindAccordion();
+        bindFullscreen();
+    }
+
+    // =========================
+    // ACCORDION MODE
+    // =========================
+
+    function bindAccordion(){
+
+        document
+        .querySelectorAll(".arrow-btn")
+        .forEach(btn=>{
+
+            btn.addEventListener(
+            "click",()=>{
+
+                const index =
+                    btn.dataset.index;
+
+                if(
+                    answerVisible[index]
+                ){
+
+                    answerVisible = {};
+
+                }else{
+
+                    answerVisible = {};
+
+                    answerVisible[index] =
+                        true;
+
+                }
+
+                renderQuestions(
+                    searchInput.value
+                );
+
+                setTimeout(()=>{
+
+                    document
+                    .querySelector(
+                        '.qn-item[data-index="'+
+                        index+'"]'
+                    )
+                    ?.scrollIntoView({
+
+                        behavior:"smooth",
+                        block:"start"
+
+                    });
+
+                },100);
+
+            });
+
+        });
+
+    }
+
 })();
+// =========================
+// FULL SCREEN SYSTEM
+// =========================
+
+const fullscreenModal =
+    document.getElementById(
+        "fullscreenModal"
+    );
+
+const fullscreenBody =
+    document.getElementById(
+        "fullscreenBody"
+    );
+
+const closeFullscreen =
+    document.getElementById(
+        "closeFullscreen"
+    );
+
+// renderQuestions() ke andar
+// answer-content ke niche ye add karo:
+
+/*
+
+<button class="fullscreen-btn"
+data-full="${index}">
+    ⛶ Full Screen
+</button>
+
+*/
+
+// renderQuestions() ke baad
+
+function bindFullscreen(){
+
+    document
+    .querySelectorAll(
+        ".fullscreen-btn"
+    )
+    .forEach(btn=>{
+
+        btn.addEventListener(
+        "click",()=>{
+
+            const index =
+                btn.dataset.full;
+
+            const data =
+                qnaData[currentSubject]
+                .questions[index];
+
+            fullscreenBody.innerHTML = `
+                <h1>${data.q}</h1>
+                ${data.a}
+            `;
+
+            fullscreenModal.style.display =
+                "block";
+
+        });
+
+    });
+
+}
+
+closeFullscreen?.addEventListener(
+"click",()=>{
+
+    fullscreenModal.style.display =
+        "none";
+
+});
+
+// =========================
+// IDEA PASSWORD SYSTEM
+// =========================
+
+const ideaBtn =
+    document.getElementById(
+        "ideaBtn"
+    );
+
+const passwordModal =
+    document.getElementById(
+        "passwordModal"
+    );
+
+const passwordInput =
+    document.getElementById(
+        "passwordInput"
+    );
+
+const passwordSubmit =
+    document.getElementById(
+        "passwordSubmit"
+    );
+
+const notesPanel =
+    document.getElementById(
+        "notesPanel"
+    );
+
+const closeNotes =
+    document.getElementById(
+        "closeNotes"
+    );
+
+ideaBtn?.addEventListener(
+"click",()=>{
+
+    passwordModal.style.display =
+        "flex";
+
+});
+
+passwordSubmit?.addEventListener(
+"click",()=>{
+
+    const pass =
+        passwordInput.value.trim();
+
+    if(pass === "lool"){
+
+        passwordModal.style.display =
+            "none";
+
+        notesPanel.style.display =
+            "block";
+
+    }else{
+
+        alert(
+            "Wrong Password"
+        );
+
+    }
+
+});
+
+closeNotes?.addEventListener(
+"click",()=>{
+
+    notesPanel.style.display =
+        "none";
+
+});
+
+// =========================
+// NOTES GENERATOR
+// =========================
+
+const notesMajor3 =
+    document.getElementById(
+        "notesMajor3"
+    );
+
+const notesMajor4 =
+    document.getElementById(
+        "notesMajor4"
+    );
+
+const notesContainer =
+    document.getElementById(
+        "notesContainer"
+    );
+
+function buildNotes(subject){
+
+    const data =
+        qnaData[subject];
+
+    let html = "";
+
+    let pageCount = 1;
+
+    html += `
+        <div class="a4-page">
+            <h2>
+                ${data.paperName}
+            </h2>
+    `;
+
+    data.questions.forEach(
+    (item,index)=>{
+
+        if(
+            index > 0 &&
+            index % 5 === 0
+        ){
+
+            html += `
+                </div>
+
+                <div class="a4-page">
+                    <h2>
+                        Page ${++pageCount}
+                    </h2>
+            `;
+
+        }
+
+        html += `
+            <div class="note-q">
+                Q${index+1}.
+                ${item.q}
+            </div>
+
+            <div class="note-a">
+                ${item.a}
+            </div>
+        `;
+
+    });
+
+    html += `</div>`;
+
+    notesContainer.innerHTML =
+        html;
+
+}
+
+notesMajor3?.addEventListener(
+"click",()=>{
+
+    buildNotes("major3");
+
+});
+
+notesMajor4?.addEventListener(
+"click",()=>{
+
+    buildNotes("major4");
+
+});
+
+// =========================
+// PDF DOWNLOAD
+// =========================
+
+const downloadPdfBtn =
+    document.getElementById(
+        "downloadPdfBtn"
+    );
+
+downloadPdfBtn?.addEventListener(
+"click",async()=>{
+
+    const target =
+        notesContainer;
+
+    const canvas =
+        await html2canvas(
+            target,
+            {
+                scale:2
+            }
+        );
+
+    const imgData =
+        canvas.toDataURL(
+            "image/png"
+        );
+
+    const {
+        jsPDF
+    } = window.jspdf;
+
+    const pdf =
+        new jsPDF(
+            "p",
+            "mm",
+            "a4"
+        );
+
+    const width =
+        pdf.internal
+        .pageSize
+        .getWidth();
+
+    const height =
+        (canvas.height * width)
+        / canvas.width;
+
+    pdf.addImage(
+        imgData,
+        "PNG",
+        0,
+        0,
+        width,
+        height
+    );
+
+    pdf.save(
+        "Semester_Notes.pdf"
+    );
+
+});
